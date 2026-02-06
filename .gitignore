@@ -1,0 +1,12 @@
+# Build directories
+/build*/
+cmake-build-*/
+
+# JUCE artefacts (local dev)
+vst3dev/
+standalonedev/
+
+# OS / IDE
+.idea/
+.vscode/
+*.user
