@@ -62,15 +62,15 @@ target_link_libraries(JuceOne
 # =====================================================================
 
 # Repo-local dev folders (one level above /source)
-set(VST3_DEV_DIR       "${CMAKE_SOURCE_DIR}/../vst3dev")
-set(STANDALONE_DEV_DIR "${CMAKE_SOURCE_DIR}/../standalonedev")
+set(VST3_DEV_DIR       "${CMAKE_SOURCE_DIR}/vst3dev")
+set(STANDALONE_DEV_DIR "${CMAKE_SOURCE_DIR}/standalonedev")
 
 file(MAKE_DIRECTORY "${VST3_DEV_DIR}")
 file(MAKE_DIRECTORY "${STANDALONE_DEV_DIR}")
 
 # Derive names from the main target to avoid hardcoding
 set(PLUGIN_TARGET "JuceOne")
-set(ARTEFACTS_DIR "${CMAKE_BINARY_DIR}/${PLUGIN_TARGET}_artefacts")
+set(ARTEFACTS_DIR "${CMAKE_CURRENT_BINARY_DIR}/${PLUGIN_TARGET}_artefacts")
 
 # ---- VST3 ------------------------------------------------------------
 # JUCE outputs:
