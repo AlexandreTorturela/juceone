@@ -2,14 +2,12 @@
 
 #include <juce_audio_processors/juce_audio_processors.h>
 
-
 //==============================================================================
-class AudioPluginAudioProcessor final : public juce::AudioProcessor
+class JuceOneAudioProcessor final : public juce::AudioProcessor
 {
 public:
-    //==============================================================================
-    AudioPluginAudioProcessor();
-    ~AudioPluginAudioProcessor() override;
+    JuceOneAudioProcessor();
+    ~JuceOneAudioProcessor() override = default;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -22,7 +20,7 @@ public:
 
     //==============================================================================
     juce::AudioProcessorEditor* createEditor() override;
-    bool hasEditor() const override;
+    bool hasEditor() const override { return true; }
 
     //==============================================================================
     const juce::String getName() const override;
@@ -43,7 +41,13 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioPluginAudioProcessor)
+    juce::AudioProcessorValueTreeState apvts;
+    static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+
+    static constexpr const char* paramGainDb = "gainDb";
+    static constexpr const char* paramBypass = "bypass";
+
+private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JuceOneAudioProcessor)
 };
